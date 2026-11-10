@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
+const host = '0.0.0.0';
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -16,8 +17,8 @@ app.get('/health', (_req, res) => {
 const pairRouter = require('./main');
 app.use('/', pairRouter);
 
-app.listen(port, () => {
-    console.log(`🚀 Server running on port ${port}`);
+app.listen(port, host, () => {
+    console.log(`🚀 Server running on http://${host}:${port}`);
 });
 
 module.exports = app;
